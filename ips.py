@@ -39,12 +39,12 @@ def main():
     
     ip_addresses = extract_ip_addresses(scan_result)
     
-    #print(f"IP's {scan_result}")
-    #print(f"IP's {ip_addresses}")
+    print(f"IP's {scan_result}")
+    print(f"IP's {ip_addresses}")
 
-    #print("IP Addresses found:")
-    #for ip in ip_addresses:
-    #    print(ip)
+    print("IP Addresses found:")
+    for ip in ip_addresses:
+        print(ip)
 
 if __name__ == "__main__":
     main()

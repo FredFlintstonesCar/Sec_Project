@@ -108,7 +108,11 @@ def extract_ip_addresses(quick_scan_result):
     for line in lines:
         if 'Nmap scan report for' in line:
             ip = line.split()[-1]
-            ip_addresses.append(ip)
+            if ip == "(" + ip_address + ")" or ip == "(" + default_gateway + ")":
+            #if ip == ipv4_address:    
+                ip = []
+            else:
+                ip_addresses.append(ip)
 
     return ip_addresses
 
@@ -135,7 +139,7 @@ if __name__ == "__main__":
     print(f"Starting Scan")
     quick_scan_result = nmap_quick_scan(network)
     
-    print(f"Quick Scan Result: {quick_scan_result}")
+    ##print(f"Quick Scan Result: {quick_scan_result}")
 
     ip_address, gateway = get_ip_and_gateway()
     print(f"IP Address: {ip_address}")
@@ -143,6 +147,7 @@ if __name__ == "__main__":
 
     # For demonstration purposes, we'll create a list of mock IP addresses
     ip_addresses = extract_ip_addresses(quick_scan_result)
+
     #["192.168.1.2", "192.168.1.3", "192.168.1.4"]
     print(f"IP Address: {ip_addresses}")
 
